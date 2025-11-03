@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #e0f2fe;
+  --primary: #42a5f5;
+  --soft: #90caf9;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background: var(--bg);
+  color: #0f172a;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* Focus styles for accessibility */
+:where(a, button, input, select, textarea, [role="button"]) {
+  outline: none;
+}
+:where(a, button, input, select, textarea, [role="button"]):focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Progress animation */
+.progress-indeterminate {
+  position: relative;
+  overflow: hidden;
+}
+.progress-indeterminate::before {
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+  animation: slide 1.2s infinite;
+}
+@keyframes slide {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
